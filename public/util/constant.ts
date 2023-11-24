@@ -16,3 +16,22 @@ export const PRODUCT_LIST: Product[] = [
     price: 70,
   },
 ];
+
+interface Route {
+  title: string;
+  path: string;
+}
+export const ROUTE_LIST: Route[] = [
+  {
+    title: "Home",
+    path: "/",
+  },
+  {
+    title: "List",
+    path: "/list",
+  },
+  {
+    title: "Cart",
+    path: "/cart",
+  },
+];

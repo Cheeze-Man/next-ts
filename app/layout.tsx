@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
+import { ROUTE_LIST } from "@/public/util/constant";
 import Link from "next/link";
+import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,12 +20,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <div className="bg-white p-5">
-          <Link className="mr-10 text-black" href="/">
-            Home
-          </Link>
-          <Link className="mr-10 text-black" href="/list">
-            List
-          </Link>
+          {ROUTE_LIST.map(({ title, path }, i) => (
+            <Link className="mr-10 text-black" href={path} key={i}>
+              {title}
+            </Link>
+          ))}
         </div>
         {children}
       </body>
