@@ -36,12 +36,7 @@ export const ROUTE_LIST: Route[] = [
   },
 ];
 
-interface CartItem {
-  name: string;
-  price: number;
-  amount: number;
-}
-export const CARTITEM_LIST: CartItem[] = [
+export const CARTITEM_LIST = [
   {
     name: "Tomatoes",
     price: 40,
