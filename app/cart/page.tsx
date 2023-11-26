@@ -2,11 +2,12 @@ import { CARTITEM_LIST } from "@/public/util/constant";
 
 export default function Cart() {
   return (
-    <div>
+    <div className="text-center">
       <h4 className="title">Cart</h4>
       {CARTITEM_LIST.map((item, i) => (
         <CartItem key={i} item={item} />
       ))}
+      <ColorButton text="결제하기" textColor="amber-300" bgColor="red-500" />
     </div>
   );
 }
@@ -25,5 +26,15 @@ function CartItem({ item }: CartItemProps) {
       <p>${item.price}</p>
       <p>{item.amount}개</p>
     </div>
+  );
+}
+
+function ColorButton({ text, bgColor, textColor }: any) {
+  return (
+    <button
+      className={`text-${textColor} bg-${bgColor} px-2.5  py-1.5 rounded-md font-bold text-lg mx-auto my-10 hover:bg-sky-700 hover:scale-105 transition duration-300 ease-in-out`}
+    >
+      {text}
+    </button>
   );
 }
