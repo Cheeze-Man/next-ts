@@ -35,3 +35,26 @@ export const ROUTE_LIST: Route[] = [
     path: "/cart",
   },
 ];
+
+interface CartItem {
+  name: string;
+  price: number;
+  amount: number;
+}
+export const CARTITEM_LIST: CartItem[] = [
+  {
+    name: "Tomatoes",
+    price: 40,
+    amount: 3,
+  },
+  {
+    name: "Pasta",
+    price: 50,
+    amount: 5,
+  },
+  {
+    name: "Coconut",
+    price: 70,
+    amount: 1,
+  },
+];
