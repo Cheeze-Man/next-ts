@@ -6,12 +6,18 @@ import { useState } from "react";
 export default function List() {
   const [listData, setListData] = useState(PRODUCT_LIST);
 
-  const handleAmountChange = (i: number, amountChange: number): void => {
+  const handleAmountChange = (index: number, amountChange: number): void => {
     setListData((prev) => {
-      const updatedListData = [...prev];
-      const newAmount = updatedListData[i].amount + amountChange;
-      updatedListData[i].amount = Math.max(0, newAmount);
-      return updatedListData;
+      return prev.map((item, i) => {
+        if (index === i) {
+          const newAmount =
+            amountChange === -1
+              ? Math.max(item.amount + amountChange, 0)
+              : item.amount + amountChange;
+          return { ...item, amount: newAmount };
+        }
+        return item;
+      });
     });
   };
 
