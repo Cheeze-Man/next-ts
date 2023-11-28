@@ -5,16 +5,14 @@ import { useState } from "react";
 
 export default function List() {
   const [listData, setListData] = useState(PRODUCT_LIST);
+  const buttonClass =
+    "text-xl font-bold rounded-md bg-slate-500 w-7 h-7 shadow-md";
 
   const handleAmountChange = (index: number, amountChange: number): void => {
     setListData((prev) => {
       return prev.map((item, i) => {
         if (index === i) {
-          const newAmount =
-            amountChange === -1
-              ? Math.max(item.amount + amountChange, 0)
-              : item.amount + amountChange;
-          return { ...item, amount: newAmount };
+          return { ...item, amount: Math.max(item.amount + amountChange, 0) };
         }
         return item;
       });
@@ -26,7 +24,7 @@ export default function List() {
       <h4 className="text-center">상품목록</h4>
       {listData.map(({ name, price, amount }, i) => (
         <div
-          className="my-20 mx-auto w-1/6 bg-white text-black p-20 rounded-md"
+          className="text-center my-20 mx-auto w-1/6 bg-white text-black p-20 rounded-md"
           key={name + i}
         >
           <img
@@ -34,18 +32,21 @@ export default function List() {
             src={`https://codingapple.com/wp-content/uploads/2023/01/food${i}.png`}
             alt={name}
           />
-          <h4 className="font-bold text-lg">
-            {name} ${price}
+          <h4 className="text-lg font-bold">
+            {name}
+            <br />$ {price}
           </h4>
           <button
+            className={buttonClass}
             onClick={() => {
               handleAmountChange(i, -1);
             }}
           >
             -
           </button>
-          <span>{amount}</span>
+          <span className="mx-3 text-lg font-bold">{amount}</span>
           <button
+            className={buttonClass}
             onClick={() => {
               handleAmountChange(i, 1);
             }}
